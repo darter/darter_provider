@@ -29,10 +29,11 @@ class ExampleApp extends StatelessWidget {
         appBar: AppBar(
           title: StreamBuilder(
             stream: ExampleProvider.bloc(context).outputStream,
-            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<String?>? snapshot) {
               if (snapshot != null) {
-                return Text(snapshot.data);
-              } else return Container();
+                return Text(snapshot.data!);
+              } else
+                return Container();
             },
           ),
         ),
