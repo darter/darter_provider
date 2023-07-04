@@ -5,7 +5,7 @@ homepage: https://darter.io
 repository: https://github.com/darter/darter_provider
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
   flutter:
