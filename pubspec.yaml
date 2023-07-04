@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  darter_bloc: 0.1.0
-  rxdart: 0.27.7
+  darter_bloc: ^0.1.0
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_test:
@@ -41,7 +41,7 @@ flutter:
   # example:
   # fonts:
   #   - family: Schyler
-  #     fonts:
+  #     fonts:<
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
