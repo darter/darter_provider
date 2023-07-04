@@ -3,7 +3,6 @@ description: Memory conscious and performant providers for use in the BLoC patte
 version: 0.0.1
 homepage: https://darter.io
 repository: https://github.com/darter/darter_provider
-author: Eduardo del Palacio Lirola <eddydpyl@gmail.com>
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
@@ -11,8 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  darter_bloc: 
-    path: ../darter_bloc
+  darter_bloc: 0.1.0
   rxdart: 0.27.7
 
 dev_dependencies:
