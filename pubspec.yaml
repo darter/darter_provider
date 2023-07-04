@@ -1,6 +1,6 @@
 name: darter_provider
 description: Memory conscious and performant providers for use in the BLoC pattern.
-version: 0.0.1
+version: 0.1.0
 homepage: https://darter.io
 repository: https://github.com/darter/darter_provider
 
