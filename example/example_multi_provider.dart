@@ -12,7 +12,7 @@ class ExampleMultiProvider extends StatelessWidget {
 
   // Normally the constructor would also take as parameters whatever the BLoCs
   // might need, in the form of its constructor parameters, or other BLoCs.
-  ExampleMultiProvider({this.child});
+  ExampleMultiProvider({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -25,32 +25,34 @@ class ExampleMultiProvider extends StatelessWidget {
           "right": ExampleBloc(),
         },
       ),
-      initialize: (Map<String, BaseBloc> blocs, Set<StreamSubscription> subscriptions) {
+      initialize: (Map<String, BaseBloc>? blocs,
+          Set<StreamSubscription>? subscriptions) {
         // The initialization process takes place only the first time the
         // widget is built, and won't happen again until it's destroyed
         // and build once again. It's a good place to connect the outputs
         // of other BLoCs to the ones in this provider. If the resulting
         // subscriptions are added to this method's parameter, they will
         // be automatically closed once the widget is destroyed.
-        ExampleBloc left = blocs["left"];
-        left.firstSink.add("some_data");
-        left.secondSink.add("some_data");
-        left.thirdSink.add("some_data");
-        ExampleBloc right = blocs["right"];
-        right.firstSink.add("some_data");
-        right.secondSink.add("some_data");
-        right.thirdSink.add("some_data");
+        ExampleBloc? left = blocs?["left"] as ExampleBloc?;
+        left?.firstSink.add("some_data");
+        left?.secondSink.add("some_data");
+        left?.thirdSink.add("some_data");
+        ExampleBloc? right = blocs?["right"] as ExampleBloc?;
+        right?.firstSink.add("some_data");
+        right?.secondSink.add("some_data");
+        right?.thirdSink.add("some_data");
       },
-      update: (Map<String, BaseBloc> blocs, Set<StreamSubscription> subscriptions) {
+      update: (Map<String, BaseBloc>? blocs,
+          Set<StreamSubscription> subscriptions) {
         // The update process takes place every time the widget is rebuilt.
         // It's the ideal place to update the BLoC's inputs that come directly
         // from this class constructor. It's a good idea to check here if the
         // new value is different from the previous one, and only forward it
         // to one of the BLoCs sinks if that is the case.
-        ExampleBloc left = blocs["left"];
-        left.secondSink.add("some_data");
-        ExampleBloc right = blocs["right"];
-        right.secondSink.add("some_data");
+        ExampleBloc? left = blocs?["left"] as ExampleBloc?;
+        left?.secondSink.add("some_data");
+        ExampleBloc? right = blocs?["right"] as ExampleBloc?;
+        right?.secondSink.add("some_data");
       },
     );
   }
@@ -62,21 +64,23 @@ class ExampleMultiProvider extends StatelessWidget {
   // as the one used when feeding the BLoCs to the inherited widget constructor.
 
   static ExampleBloc leftBloc(BuildContext context) =>
-      MultiBaseProvider.bloc<ExampleMultiInherited>(context, "left");
+      MultiBaseProvider.bloc<ExampleMultiInherited>(context, "left")
+          as ExampleBloc;
 
   static ExampleBloc rightBloc(BuildContext context) =>
-      MultiBaseProvider.bloc<ExampleMultiInherited>(context, "right");
+      MultiBaseProvider.bloc<ExampleMultiInherited>(context, "right")
+          as ExampleBloc;
 
-  static PublishSubject<BaseException> exception(BuildContext context) =>
-      MultiBaseProvider.exception<ExampleMultiInherited>(context);
+  static PublishSubject<BaseException?> exception(BuildContext context) =>
+      MultiBaseProvider.exception<ExampleMultiInherited>(context)
+          as PublishSubject<BaseException?>;
 }
 
 // ignore: must_be_immutable
 class ExampleMultiInherited extends MultiBaseInherited {
-
   ExampleMultiInherited({
-    @required Widget child,
-    @required Map<String, BaseBloc> blocs,
+    required Widget child,
+    required Map<String, BaseBloc> blocs,
   }) : super(child: child, blocs: blocs);
 
   @override

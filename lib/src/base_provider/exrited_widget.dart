@@ -5,10 +5,10 @@ import 'package:rxdart/rxdart.dart';
 // ignore: must_be_immutable
 abstract class ExritedWidget extends InheritedWidget {
   // ignore: close_sinks
-  PublishSubject<BaseException> exception;
+  PublishSubject<BaseException?>? exception;
 
   ExritedWidget({
-    @required Widget child,
+    required Widget child,
   }) : super(child: child);
 
   void init() => exception = PublishSubject();
